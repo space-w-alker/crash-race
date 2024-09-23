@@ -1,0 +1,72 @@
+[gd_scene load_steps=3 format=3 uid="uid://duy0dbkychify"]
+
+[ext_resource type="Script" path="res://cars/Scripts/car_controller.gd" id="1_jwdp1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mm2gk"]
+size = Vector3(1.9717, 0.734863, 2.08592)
+
+[node name="car" type="VehicleBody3D"]
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -0.1, 0)
+script = ExtResource("1_jwdp1")
+
+[node name="camera_follow" type="Node3D" parent="."]
+transform = Transform3D(-1, 6.42399e-09, -8.71864e-08, 0, 0.997297, 0.0734819, 8.74228e-08, 0.0734819, -0.997297, -5.0554e-07, 4.46325, -11.4952)
+
+[node name="rear_left" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03343, 0.340338, -1.57977)
+use_as_traction = true
+wheel_roll_influence = 1.0
+wheel_radius = 0.431
+wheel_rest_length = 0.3
+wheel_friction_slip = 5.0
+suspension_stiffness = 30.0
+suspension_max_force = 10000.0
+
+[node name="rear_right" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.02622, 0.340338, -1.57977)
+use_as_traction = true
+wheel_roll_influence = 1.0
+wheel_radius = 0.431
+wheel_rest_length = 0.3
+wheel_friction_slip = 5.0
+suspension_stiffness = 30.0
+suspension_max_force = 10000.0
+
+[node name="front_left" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03343, 0.340338, 1.51869)
+use_as_traction = true
+use_as_steering = true
+wheel_roll_influence = 1.0
+wheel_radius = 0.431
+wheel_rest_length = 0.3
+wheel_friction_slip = 5.0
+suspension_stiffness = 30.0
+suspension_max_force = 10000.0
+
+[node name="front_right" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.02622, 0.340338, 1.51869)
+use_as_traction = true
+use_as_steering = true
+wheel_roll_influence = 1.0
+wheel_radius = 0.431
+wheel_rest_length = 0.3
+wheel_friction_slip = 5.0
+suspension_stiffness = 30.0
+suspension_max_force = 10000.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.689432, -0.062412)
+shape = SubResource("BoxShape3D_mm2gk")
+
+[node name="detect_floor" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 31.931, 45.6111)
+target_position = Vector3(0, 50, 0)
+debug_shape_custom_color = Color(0.901082, 0.730871, 3.08037e-06, 1)
+debug_shape_thickness = 5
+
+[node name="detect_wall" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.575307, -1.85639e-08)
+target_position = Vector3(0, 4, 0)
+debug_shape_custom_color = Color(0.73615, 0.000560627, 0.764971, 1)
+debug_shape_thickness = 5
