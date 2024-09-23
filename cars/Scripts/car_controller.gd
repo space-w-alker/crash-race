@@ -7,6 +7,7 @@ var weight = 5
 var steer: float = 0;
 
 var brake_target: float = 0;
+var last_balance_time: float = 0
 
 @onready var floorRay: RayCast3D = $detect_floor
 @onready var wallRay: RayCast3D = $detect_wall
@@ -28,7 +29,7 @@ enum DriveMode { THROTTLE, BRAKE, NEUTRAL, REVERSE }
 				reverse()
 	get:
 		return drive_mode
-		
+
 func throttle():
 	brake_target = 0
 	target_engine_force = 120
@@ -50,6 +51,9 @@ func set_steer(value: float):
 	steer = value
 
 func _physics_process(delta: float) -> void:
+
+	if (angular_velocity.length_squared() > 5 and Time.get_ticks_msec() - last_balance_time > 1000):
+		print("Too much: ", angular_velocity.length_squared(), "Applying force")
 	engine_force = lerpf(engine_force, target_engine_force, weight * delta)
 	steering = lerpf(steering, steer * 0.3, 30 * delta)
 	brake = lerpf(brake, brake_target, 30 * delta)

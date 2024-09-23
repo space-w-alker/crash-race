@@ -7,7 +7,7 @@ size = Vector3(1.9717, 0.734863, 2.08592)
 
 [node name="car" type="VehicleBody3D"]
 center_of_mass_mode = 1
-center_of_mass = Vector3(0, -0.1, 0)
+center_of_mass = Vector3(0, -0.2, 0)
 script = ExtResource("1_jwdp1")
 
 [node name="camera_follow" type="Node3D" parent="."]
@@ -66,7 +66,7 @@ debug_shape_custom_color = Color(0.901082, 0.730871, 3.08037e-06, 1)
 debug_shape_thickness = 5
 
 [node name="detect_wall" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.575307, -1.85639e-08)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.665, 0)
 target_position = Vector3(0, 4, 0)
 debug_shape_custom_color = Color(0.73615, 0.000560627, 0.764971, 1)
 debug_shape_thickness = 5

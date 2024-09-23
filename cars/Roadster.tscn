@@ -431,13 +431,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_myffk")
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i8dh5"]
-radius = 0.480388
-height = 2.14443
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xx4mx"]
+radius = 0.377096
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h56tj"]
-radius = 0.445982
-height = 2.01587
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_16hol"]
 
 [node name="car" instance=ExtResource("1_imhx3")]
 
@@ -492,9 +489,9 @@ mesh = SubResource("ArrayMesh_lvrtb")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="8"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 2.46822e-08, 0.564663, 2.36521)
-shape = SubResource("CapsuleShape3D_i8dh5")
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.000274628, 0.635991, 2.298)
+shape = SubResource("CapsuleShape3D_xx4mx")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="." index="9"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 2.83668e-08, 0.648957, -2.32538)
-shape = SubResource("CapsuleShape3D_h56tj")
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.0181732, 0.662293, -2.27362)
+shape = SubResource("CapsuleShape3D_16hol")

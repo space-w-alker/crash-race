@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://bs4xdyx3mglt2"]
 
 [ext_resource type="PackedScene" uid="uid://biro0tey8yqju" path="res://cars/Taxi.tscn" id="1_dxyrq"]
-[ext_resource type="Texture2D" uid="uid://cpwiyoo7664vj" path="res://cars/Models/texture_10.png" id="2_4uho4"]
+[ext_resource type="Texture2D" uid="uid://vg5wsqvmfqi" path="res://environment/test_texture.png" id="2_yvbx6"]
 [ext_resource type="PackedScene" uid="uid://d067hqit14n5u" path="res://cars/Roadster.tscn" id="3_bltug"]
 [ext_resource type="Script" path="res://cars/camera/camera_follow.gd" id="3_pj1av"]
 [ext_resource type="Script" path="res://cars/Scripts/ai_input_controller.gd" id="4_g8eii"]
@@ -29,7 +29,8 @@ sdfgi_y_scale = 2
 glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2da72"]
-albedo_texture = ExtResource("2_4uho4")
+albedo_texture = ExtResource("2_yvbx6")
+uv1_scale = Vector3(0.05, 0.05, 0.05)
 uv1_triplanar = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_1ypv7"]
@@ -49,6 +50,8 @@ environment = SubResource("Environment_8dxyn")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.80696, 0.183487, -0.56138, 0, 0.950516, 0.310676, 0.590606, -0.250704, 0.767029, 0, 43.5687, 0)
 shadow_enabled = true
+shadow_bias = 0.0
+shadow_blur = 0.0
 directional_shadow_max_distance = 200.0
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
