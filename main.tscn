@@ -30,7 +30,6 @@ glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2da72"]
 albedo_texture = ExtResource("2_yvbx6")
-uv1_scale = Vector3(0.05, 0.05, 0.05)
 uv1_triplanar = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_1ypv7"]
@@ -41,8 +40,13 @@ rings = 1
 
 [node name="Main" type="Node3D"]
 
-[node name="car2" parent="." instance=ExtResource("1_dxyrq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.61597, 0, 0)
+[node name="car2" parent="." groups=["cars"] instance=ExtResource("1_dxyrq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.61597, 0.882483, 0)
+
+[node name="car" parent="." groups=["cars"] instance=ExtResource("3_bltug")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00162, 0)
+angular_damp_mode = 1
+angular_damp = 5.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8dxyn")
@@ -124,9 +128,6 @@ size = Vector3(0.3, 0.14044, 10.8715)
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("player_node")]
 script = ExtResource("3_pj1av")
 player_node = NodePath("../car2")
-
-[node name="car" parent="." instance=ExtResource("3_bltug")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00162, 0)
 
 [node name="AiInputController" type="Node" parent="." node_paths=PackedStringArray("vehicle")]
 script = ExtResource("4_g8eii")

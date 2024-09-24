@@ -1,17 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://duy0dbkychify"]
+[gd_scene load_steps=4 format=3 uid="uid://duy0dbkychify"]
 
 [ext_resource type="Script" path="res://cars/Scripts/car_controller.gd" id="1_jwdp1"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2hp6r"]
+rough = true
+bounce = 0.27
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mm2gk"]
 size = Vector3(1.9717, 0.734863, 2.08592)
 
 [node name="car" type="VehicleBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_2hp6r")
 center_of_mass_mode = 1
-center_of_mass = Vector3(0, -0.2, 0)
+center_of_mass = Vector3(0, -0.35, 0)
+contact_monitor = true
+max_contacts_reported = 5
 script = ExtResource("1_jwdp1")
 
 [node name="camera_follow" type="Node3D" parent="."]
-transform = Transform3D(-1, 6.42399e-09, -8.71864e-08, 0, 0.997297, 0.0734819, 8.74228e-08, 0.0734819, -0.997297, -5.0554e-07, 4.46325, -11.4952)
+transform = Transform3D(-1, 6.42399e-09, -8.71864e-08, 0, 0.997297, 0.0734819, 8.74228e-08, 0.0734819, -0.997297, -5.0554e-07, 9.03907, -16.5036)
 
 [node name="rear_left" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03343, 0.340338, -1.57977)
@@ -60,7 +67,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.689432, -0.062412)
 shape = SubResource("BoxShape3D_mm2gk")
 
 [node name="detect_floor" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 31.931, 45.6111)
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 31.931, 35.4539)
 target_position = Vector3(0, 50, 0)
 debug_shape_custom_color = Color(0.901082, 0.730871, 3.08037e-06, 1)
 debug_shape_thickness = 5
