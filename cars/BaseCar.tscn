@@ -3,16 +3,17 @@
 [ext_resource type="Script" path="res://cars/Scripts/car_controller.gd" id="1_jwdp1"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2hp6r"]
+friction = 0.1
 rough = true
-bounce = 0.27
+bounce = 0.4
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mm2gk"]
-size = Vector3(1.9717, 0.734863, 2.08592)
+size = Vector3(1.9717, 0.820831, 5.01874)
 
 [node name="car" type="VehicleBody3D"]
 physics_material_override = SubResource("PhysicsMaterial_2hp6r")
 center_of_mass_mode = 1
-center_of_mass = Vector3(0, -0.35, 0)
+center_of_mass = Vector3(0, -0.3, 0)
 contact_monitor = true
 max_contacts_reported = 5
 script = ExtResource("1_jwdp1")
@@ -63,7 +64,7 @@ suspension_stiffness = 30.0
 suspension_max_force = 10000.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.689432, -0.062412)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.820917, 0.0535882)
 shape = SubResource("BoxShape3D_mm2gk")
 
 [node name="detect_floor" type="RayCast3D" parent="."]

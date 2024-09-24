@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://d067hqit14n5u"]
+[gd_scene load_steps=21 format=4 uid="uid://d067hqit14n5u"]
 
 [ext_resource type="PackedScene" uid="uid://duy0dbkychify" path="res://cars/BaseCar.tscn" id="1_imhx3"]
 
@@ -431,11 +431,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_myffk")
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xx4mx"]
-radius = 0.377096
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_16hol"]
-
 [node name="car" instance=ExtResource("1_imhx3")]
 
 [node name="rear_left" parent="." index="1"]
@@ -487,11 +482,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.556864, -0.062412)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 mesh = SubResource("ArrayMesh_lvrtb")
 skeleton = NodePath("")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="8"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.000274628, 0.635991, 2.298)
-shape = SubResource("CapsuleShape3D_xx4mx")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="." index="9"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.0181732, 0.662293, -2.27362)
-shape = SubResource("CapsuleShape3D_16hol")

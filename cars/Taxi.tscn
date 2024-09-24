@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://biro0tey8yqju"]
+[gd_scene load_steps=20 format=4 uid="uid://biro0tey8yqju"]
 
 [ext_resource type="PackedScene" uid="uid://duy0dbkychify" path="res://cars/BaseCar.tscn" id="1_vbwr5"]
 
@@ -405,13 +405,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_0bght")
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sgn4b"]
-height = 2.35079
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v48r4"]
-radius = 0.376313
-height = 2.24948
-
 [node name="car" instance=ExtResource("1_vbwr5")]
 
 [node name="Taxi wheel rear left" type="MeshInstance3D" parent="rear_left" index="0"]
@@ -441,11 +434,3 @@ transform = Transform3D(1.01793, 0, 0, 0, 0.954502, 0, 0, 0, 0.954502, 0, -0.143
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 mesh = SubResource("ArrayMesh_of4rg")
 skeleton = NodePath("")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="7"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.00249708, 0.637327, 1.99817)
-shape = SubResource("CapsuleShape3D_sgn4b")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="." index="8"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.0028969, 0.606481, -2.15072)
-shape = SubResource("CapsuleShape3D_v48r4")
