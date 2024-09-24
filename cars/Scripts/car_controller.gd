@@ -1,66 +1,21 @@
-class_name VehicleController
-extends VehicleBody3D
+extends CharacterBody3D
 
-var target_engine_force = 0
-var weight = 5
+# Car parameters
+var max_speed = 10.0
+var acceleration = 5.0
+var braking_force = 10.0
+var steering_sensitivity = 0.1
 
-var steer: float = 0;
-
-var brake_target: float = 0;
-var last_balance_time: float = 0
-var last_angular_velocity: Vector3 = Vector3.ZERO;
-
-@onready var floorRay: RayCast3D = $detect_floor
-@onready var wallRay: RayCast3D = $detect_wall
-
-# Define an enum with the required values
-enum DriveMode { THROTTLE, BRAKE, NEUTRAL, REVERSE }
-
-@export var drive_mode: DriveMode = DriveMode.NEUTRAL:
-	set(value):
-		if value != drive_mode:
-			drive_mode = value
-			if drive_mode == DriveMode.NEUTRAL:
-				neutral()
-			elif drive_mode == DriveMode.THROTTLE:
-				throttle()
-			elif drive_mode == DriveMode.BRAKE:
-				apply_break()
-			elif drive_mode == DriveMode.REVERSE:
-				reverse()
-	get:
-		return drive_mode
-
-func throttle():
-	brake_target = 0
-	target_engine_force = 120
-	weight = 5
-func neutral():
-	brake_target = 0
-	target_engine_force = 0
-	weight = 1
-func apply_break():
-	brake_target = 4
-	target_engine_force = 0
-	engine_force = 0
-	weight = 10
-func reverse():
-	brake_target = 0
-	target_engine_force = -80
-	weight = 5
-func set_steer(value: float):
-	steer = value
+# Steering and throttle inputs
+var steering = 0.0
+var throttle = 0.0
 
 func _ready() -> void:
-	add_to_group("cars")
-	pass
+	velocity = Vector3.DOWN * 0.5
 
-
-func _physics_process(delta: float) -> void:
-	last_angular_velocity = angular_velocity;
-	if (angular_velocity.length_squared() > 2 and Time.get_ticks_msec() - last_balance_time > 1000):
-		pass
-		# print("Too much: ", angular_velocity.length_squared(), "Applying force")
-	engine_force = lerpf(engine_force, target_engine_force, weight * delta)
-	steering = lerpf(steering, steer * 0.3, 30 * delta)
-	brake = lerpf(brake, brake_target, 30 * delta)
+func _physics_process(delta):
+	steering = Input.get_axis("ui_left", "ui_right")
+	rotate(Vector3.UP, steering * delta)
+	velocity = (basis.z) + Vector3.DOWN
+	# Move the character body
+	move_and_slide()
