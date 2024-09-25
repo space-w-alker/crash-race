@@ -3,6 +3,9 @@ extends Node
 
 @export var vehicle: VehicleController
 
+func _init(v: VehicleController = null) -> void:
+	vehicle = v;
+
 func _physics_process(_delta: float) -> void:
 	var input_x = Input.get_action_strength("ui_left") - Input.get_action_strength("ui_right")
 	var input_y = Input.get_action_strength("ui_up") - Input.get_action_strength("ui_down")

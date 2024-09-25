@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://duy0dbkychify"]
+[gd_scene load_steps=5 format=3 uid="uid://duy0dbkychify"]
 
 [ext_resource type="Script" path="res://cars/Scripts/car_controller.gd" id="1_jwdp1"]
+[ext_resource type="Resource" uid="uid://c851qfmp1q5kc" path="res://cars/configs/player_car_config.tres" id="2_2l3rr"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2hp6r"]
 friction = 0.1
@@ -17,6 +18,7 @@ center_of_mass = Vector3(0, -0.3, 0)
 contact_monitor = true
 max_contacts_reported = 5
 script = ExtResource("1_jwdp1")
+car_config = ExtResource("2_2l3rr")
 
 [node name="camera_follow" type="Node3D" parent="."]
 transform = Transform3D(-1, 6.42399e-09, -8.71864e-08, 0, 0.997297, 0.0734819, 8.74228e-08, 0.0734819, -0.997297, -5.0554e-07, 9.03907, -16.5036)

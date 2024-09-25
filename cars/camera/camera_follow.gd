@@ -1,5 +1,7 @@
 extends Camera3D
 
+class_name CarCameraFollow
+
 ## The target node that the camera will look towards and rotate around.
 @export var player_node: Node3D
 

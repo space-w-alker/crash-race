@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://2gbsa27e51qx"]
+
+[ext_resource type="Script" path="res://cars/configs/car_config.gd" id="1_h3w05"]
+
+[resource]
+script = ExtResource("1_h3w05")
+mass_multiplier = 1
+control_type = 1

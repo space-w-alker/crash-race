@@ -1,6 +1,7 @@
 class_name VehicleController
 extends VehicleBody3D
 
+
 var target_engine_force = 0
 var weight = 5
 
@@ -10,11 +11,17 @@ var brake_target: float = 0;
 var last_balance_time: float = 0
 var last_angular_velocity: Vector3 = Vector3.ZERO;
 
+@export var car_config: CarConfig
+
 @onready var floorRay: RayCast3D = $detect_floor
 @onready var wallRay: RayCast3D = $detect_wall
 
 # Define an enum with the required values
 enum DriveMode { THROTTLE, BRAKE, NEUTRAL, REVERSE }
+
+func _init(_car_config: CarConfig = null) -> void:
+	car_config = _car_config
+
 
 @export var drive_mode: DriveMode = DriveMode.NEUTRAL:
 	set(value):
@@ -33,26 +40,28 @@ enum DriveMode { THROTTLE, BRAKE, NEUTRAL, REVERSE }
 
 func throttle():
 	brake_target = 0
-	target_engine_force = 120
+	target_engine_force = 120 if car_config == null else 120 * car_config.mass_multiplier
 	weight = 5
 func neutral():
 	brake_target = 0
 	target_engine_force = 0
 	weight = 1
 func apply_break():
-	brake_target = 4
+	brake_target = 4 if car_config == null else 4 * car_config.mass_multiplier
 	target_engine_force = 0
 	engine_force = 0
 	weight = 10
 func reverse():
 	brake_target = 0
-	target_engine_force = -80
+	target_engine_force = -120 if car_config == null else -120 * car_config.mass_multiplier
 	weight = 5
 func set_steer(value: float):
 	steer = value
 
 func _ready() -> void:
 	add_to_group("cars")
+	if car_config != null:
+		mass = car_config.mass_multiplier * mass
 	pass
 
 

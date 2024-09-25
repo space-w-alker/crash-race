@@ -15,6 +15,10 @@ run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.3")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 
+[autoload]
+
+Global="*res://scripts/autoloads/global.gd"
+
 [editor_plugins]
 
 enabled=PackedStringArray()

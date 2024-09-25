@@ -9,6 +9,9 @@ var reverse_start_time: float = .0
 
 @export var vehicle: VehicleController
 
+func _init(v: VehicleController = null) -> void:
+	vehicle = v;
+
 func _ready() -> void:
 	enter_scene_time = Time.get_ticks_msec();
 

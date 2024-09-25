@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bs4xdyx3mglt2"]
+[gd_scene load_steps=14 format=3 uid="uid://bs4xdyx3mglt2"]
 
 [ext_resource type="PackedScene" uid="uid://biro0tey8yqju" path="res://cars/Taxi.tscn" id="1_dxyrq"]
 [ext_resource type="Texture2D" uid="uid://vg5wsqvmfqi" path="res://environment/test_texture.png" id="2_yvbx6"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://cars/camera/camera_follow.gd" id="3_pj1av"]
 [ext_resource type="Script" path="res://cars/Scripts/ai_input_controller.gd" id="4_g8eii"]
 [ext_resource type="Script" path="res://cars/Scripts/input_controller.gd" id="6_asl08"]
+[ext_resource type="Script" path="res://scripts/enemy_spawner.gd" id="7_osfpk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b7tlo"]
 sky_top_color = Color(0.419608, 0.54902, 0.619608, 1)
@@ -47,6 +48,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.61597, 0.882483, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00162, 0)
 angular_damp_mode = 1
 angular_damp = 5.0
+car_config = null
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8dxyn")
@@ -136,3 +138,8 @@ vehicle = NodePath("../car")
 [node name="UserInputController" type="Node" parent="." node_paths=PackedStringArray("vehicle")]
 script = ExtResource("6_asl08")
 vehicle = NodePath("../car2")
+
+[node name="EnemySpawner" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.7309, 0)
+script = ExtResource("7_osfpk")
+scenes = Array[PackedScene]([ExtResource("1_dxyrq")])
