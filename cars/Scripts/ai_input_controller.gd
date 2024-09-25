@@ -42,11 +42,11 @@ func process_state_transition():
 
 func process_current_state():
 	if (state == Machine.MOVING):
-		vehicle.drive_mode = VehicleController.DriveMode.THROTTLE
+		vehicle.move(1)
 		vehicle.set_steer(0)
 	elif (state == Machine.BRAKING):
-		vehicle.drive_mode = VehicleController.DriveMode.BRAKE;
+		vehicle.move(-1)
 		vehicle.set_steer(0)
 	elif (state == Machine.REVERSE_TURNING):
-		vehicle.drive_mode = VehicleController.DriveMode.REVERSE
+		vehicle.move(-1)
 		vehicle.set_steer(1)

@@ -16,47 +16,44 @@ var last_angular_velocity: Vector3 = Vector3.ZERO;
 @onready var floorRay: RayCast3D = $detect_floor
 @onready var wallRay: RayCast3D = $detect_wall
 
-# Define an enum with the required values
-enum DriveMode { THROTTLE, BRAKE, NEUTRAL, REVERSE }
-
 func _init(_car_config: CarConfig = null) -> void:
 	car_config = _car_config
 
+func move(by: float) -> void:
+	if by > 0:
+		if linear_velocity.length_squared() > 1 and basis.z.dot(linear_velocity) < 0:
+			_apply_brake()
+		else:
+			_throttle()
+	elif by < 0:
+		if linear_velocity.length_squared() > 1 and basis.z.dot(linear_velocity) > 0:
+			_apply_brake()
+		else:
+			_reverse()
+	else:
+		_neutral()
 
-@export var drive_mode: DriveMode = DriveMode.NEUTRAL:
-	set(value):
-		if value != drive_mode:
-			drive_mode = value
-			if drive_mode == DriveMode.NEUTRAL:
-				neutral()
-			elif drive_mode == DriveMode.THROTTLE:
-				throttle()
-			elif drive_mode == DriveMode.BRAKE:
-				apply_break()
-			elif drive_mode == DriveMode.REVERSE:
-				reverse()
-	get:
-		return drive_mode
 
-func throttle():
+func set_steer(value: float):
+	steer = value
+
+func _throttle():
 	brake_target = 0
 	target_engine_force = 120 if car_config == null else 120 * car_config.mass_multiplier
 	weight = 5
-func neutral():
+func _neutral():
 	brake_target = 0
 	target_engine_force = 0
 	weight = 1
-func apply_break():
+func _apply_brake():
 	brake_target = 4 if car_config == null else 4 * car_config.mass_multiplier
 	target_engine_force = 0
 	engine_force = 0
 	weight = 10
-func reverse():
+func _reverse():
 	brake_target = 0
 	target_engine_force = -120 if car_config == null else -120 * car_config.mass_multiplier
 	weight = 5
-func set_steer(value: float):
-	steer = value
 
 func _ready() -> void:
 	add_to_group("cars")
